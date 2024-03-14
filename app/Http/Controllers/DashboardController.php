@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\View\View;
+use App\Models\Client; // Import your Client model at the top
 
 class DashboardController extends Controller
 {
-    public function index(): View
+    public function index()
     {
-        return view('dashboard');
+        // Fetch clients from the database
+        $clients = Client::all();
+
+        // Pass the clients to the dashboard view
+        return view('dashboard', ['clients' => $clients]);
     }
 }
