@@ -29,12 +29,12 @@ class ClientController extends Controller
             'email' => 'required|email|max:255',
             'telephone' => 'required|max:255',
             'address' => 'required|max:255',
-            'company_logo' => 'required|image|max:1024', // Validate for image file
+            'company_logo' => 'required|image|max:12288', // Validate for image file
         ]);
 
         // Handle file upload for the company logo
         if ($request->hasFile('company_logo')) {
-            $path = $request->file('company_logo')->store('company_logos', 'public');
+            $path = $request->file('company_logo')->storeAs('company_logos',$request->file('company_logo')->getClientOriginalName(),'public');
             $validatedData['company_logo'] = $path; // Save the path in the database
         }
 
@@ -43,6 +43,6 @@ class ClientController extends Controller
 
         // Redirect to the dashboard with a success message
         // Make sure 'dashboard' route is correctly defined in your routes/web.php
-        return redirect()->route('dashboard')->with('success', 'New client added successfully.');
+        return redirect('/dashboard')->with('success', 'New client added successfully.');
     }
 }

@@ -15,15 +15,15 @@ Route::get('/about', function () {
 })->name('about');
 
 // Dashboard route with 'auth' middleware
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 // Authentication routes
 Route::get('/login', [AuthController::class, 'create'])->name('login');
 Route::post('/login', [AuthController::class, 'store']);
 
 // Logout route
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [AuthController::class, 'logout']);
 
 // Client routes with 'auth' middleware
-Route::get('/clients/add', [ClientController::class, 'create'])->name('clients.create')->middleware('auth');
+Route::get('/clients/create', [ClientController::class, 'create'])->middleware('auth');
 Route::post('/clients', [ClientController::class, 'store'])->middleware('auth');

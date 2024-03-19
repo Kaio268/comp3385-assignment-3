@@ -6,9 +6,7 @@
         <p class="lead">Welcome to your dashboard. Here you can manage your account, your clients, and much more.</p>
         
         <!-- Create Client button, conditional display based on route existence -->
-        @if(Route::has('clients.create'))
-            <a href="{{ route('clients.create') }}" class="btn btn-primary mb-3">+ Create Client</a>
-        @endif
+            <a href="{{ url('/clients/create') }}" class="btn btn-primary mb-3">+ Create Client</a>
         
         <!-- Display Clients -->
         <div class="row">

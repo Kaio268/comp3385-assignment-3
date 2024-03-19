@@ -24,19 +24,17 @@
                     </li>
                     @auth
                     <li class="nav-item"> <!-- Dashboard link added (Exercise 6 - Requirement 4) -->
-                        <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                        <a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a>
                     </li>
                     @endauth
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link" href="{{ url('/login') }}">Login</a>
                     </li>
                     @else
                     <li class="nav-item">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="nav-link btn btn-link" style="display: inline; padding: 0;">Logout</button>
-                        </form>
+                        <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
+                        
                     </li>
                     @endguest
                 </ul>

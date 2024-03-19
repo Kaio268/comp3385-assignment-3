@@ -4,6 +4,16 @@
     <div class="container">
         <h1>Add New Client</h1>
 
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         {{-- Form to add a new client --}}
         <form action="{{ url('/clients') }}" method="POST" enctype="multipart/form-data">
             @csrf {{-- CSRF token for form security --}}
